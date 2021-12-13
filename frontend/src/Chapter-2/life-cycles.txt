@@ -1,0 +1,10 @@
+Hooks: ganchos
+
+1) beforeCreate: antes da criação do componente, observa os dados e eventos de inicialização
+2) created: é localizado o html, se está tag template ou JSX
+3) beforeMount: antes de montar o componente, fornecer os dados ao HTML, resultando a DOM
+4) mounted: componente montando, estável e fica pausado, mas fica de olho nas atualizações de dados e quando tiver cria-se...
+5) beforeUpdate: antes de atualizar
+6) update: atualizado
+7) beforeUnmount: antes de desmontar
+8) Unmounted: desmontado

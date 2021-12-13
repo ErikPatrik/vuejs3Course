@@ -1,30 +1,39 @@
 <template>
-    <h1>{{ person.name }} {{ person.lastname }}</h1>
-    <h1>{{ fullName }}</h1>
+    <h1>{{ message }}</h1>
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
-
-interface Person {
-    name: string
-    lastname: string
-}
+import {defineComponent} from 'vue'
 
 export default defineComponent({
     data() {
         return {
-            person: {
-                name: 'Erik',
-                lastname: 'Pittaluga'
-            } as Person
+            message: 'Olá'
         }
     },
-    //retorna algum dado com algum tipo de alteração
-    computed: {
-        fullName(): string {
-            return `${this.person.name} ${this.person.lastname}`
-        }
+    beforeCreate() {
+        // usamos quando precisamos fazer algo possível
+        // mas que nao tenha contato com a DOM
+        console.log(this.message) //undefined
+    },
+    created() {
+        console.log(this.message)
+    },
+    // beforeMount e mounted tem acessos ao dados da Data
+    // antes de montar o HTML/DOM, ele nao tem acesso a DOM, não possui acesso ao $el
+    beforeMount() {
+        console.log(this.$el)
+    },
+    // Aqui possui acesso a DOM, então aqui é recomendado fazer alterações na DOM
+    mounted() {
+        this.$el.style.background = 'red'
+    },
+    // Aqui se refere a mudanças de dados do componente
+    beforeUpdate() {
+        console.log('Antes da atualização')
+    },
+    updated() {
+        console.log('Depois da atualização')
     }
 })
 </script>
