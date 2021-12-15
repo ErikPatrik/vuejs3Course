@@ -1,28 +1,19 @@
+<!--
+    v-on escuta eventos para manipular a DOM
+-->
+
 <template>
-  <p>{{ count }}</p>
-  <button @click="increment"></button>
+  <a href="#interno" v-on:click="something">Link interno</a>
 </template>
 
-<script lang="ts" setup>
-import { ref, watch } from 'vue'
+<script lang="ts">
+import { defineComponent } from 'vue'
 
-function useCount(n = 0) {
-  const count = ref(n)
-
-  function increment() {
-    return count.value++
+export default defineComponent({
+  methods: {
+    something() {
+      console.log('Olá')
+    }
   }
-
-  return {
-    count,
-    increment
-  }
-}
-
-const { count, increment } = useCount()
-const a = ref('name')
-
-watch([count, a], ([value, novoA], [oldValue, antigoA]) => {
-  console.log(oldValue, value)
 })
 </script>
