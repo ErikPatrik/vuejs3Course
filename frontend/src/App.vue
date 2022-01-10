@@ -1,18 +1,23 @@
-<!--
-    v-on escuta eventos para manipular a DOM
--->
-
 <template>
-  <a href="#interno" v-on:click="something">Link interno</a>
+  <ul>
+    <li v-for="product in products" :key="product.id">
+      {{ product.name }}
+    </li>
+  </ul>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
 
 export default defineComponent({
-  methods: {
-    something() {
-      console.log('Olá')
+  data() {
+    return {
+      products: [
+        { id: 1, name: 'Camisa', stock: true },
+        { id: 2, name: 'Bota', stock: false },
+        { id: 3, name: 'Chapéu', stock: false },
+        { id: 4, name: 'Cinto', stock: true }
+      ]
     }
   }
 })
